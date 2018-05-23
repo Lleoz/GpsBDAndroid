@@ -23,8 +23,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -39,18 +37,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class GpsActivity extends AppCompatActivity {
+    TextView mensaje1;
+    TextView mensaje2;
+    Button btnGuardar, btnStop;
+    private Handler handler = new Handler();
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                new Insertar(GpsActivity.this).execute();
+                handler.postDelayed(runnable, 5000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent LoginActivity = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(LoginActivity);
-
-        setContentView(R.layout.activity_login);
-        
-        /*setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         // handler.post(sendData);
 
         mensaje1 = (TextView) findViewById(R.id.mensaje_id);
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "Empieza el recorrido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GpsActivity.this, "Empieza el recorrido", Toast.LENGTH_SHORT).show();
                 handler.postDelayed(runnable, 10000);
 
             }
@@ -70,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 handler.removeCallbacks(runnable);
-                Toast.makeText(MainActivity.this, "Finalizo el recorrido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GpsActivity.this, "Finalizo el recorrido", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -78,13 +87,11 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
             locationStart();
-        }*/
+        }
     }
-}
-
 
     //Insertamos los datos a nuestra webService
-   /* private boolean insertar() {
+    private boolean insertar() {
         HttpClient httpClient;
         List<NameValuePair> nameValuePairs;
         HttpPost httpPost;
@@ -164,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
         private Activity context;
 
-        Insertar(MainActivity context) {
+        Insertar(GpsActivity context) {
             this.context = context;
         }
 
@@ -194,16 +201,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /* Aqui empieza la Clase Localizacion */
-   /*
     public class Localizacion implements LocationListener {
-        MainActivity mainActivity;
+        GpsActivity gpsActivity;
 
-        public MainActivity getMainActivity() {
-            return mainActivity;
+        public GpsActivity getGpsActivity() {
+            return gpsActivity;
         }
 
-        public void setMainActivity(MainActivity mainActivity) {
-            this.mainActivity = mainActivity;
+        public void setMainActivity(GpsActivity mainActivity) {
+            this.gpsActivity = mainActivity;
         }
 
         @Override
@@ -216,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
             String Text = "Lat = " + loc.getLatitude() + "\n Long = " + loc.getLongitude();
             mensaje1.setText(Text);
-            this.mainActivity.setLocation(loc);
+            this.gpsActivity.setLocation(loc);
         }
 
         @Override
@@ -246,4 +252,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}*/
+}
