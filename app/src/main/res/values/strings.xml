@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">AppSegundoPlanoGuardarGpsBD</string>
+    <string name="app_name">biCy On</string>
+    <string name="title_activity_login">Acceso</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Ingresar</string>
+    <string name="action_sign_in_short">Ingresar</string>
+    <string name="error_invalid_email">El email es invalido</string>
+    <string name="error_invalid_password">El password es demasiado corto</string>
+    <string name="error_incorrect_password">El password es incorrecto</string>
+    <string name="error_field_required">Es requerido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>

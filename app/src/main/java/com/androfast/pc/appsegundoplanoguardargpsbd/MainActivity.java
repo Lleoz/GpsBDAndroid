@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
+        /*setContentView(R.layout.activity_main);
         // handler.post(sendData);
 
         mensaje1 = (TextView) findViewById(R.id.mensaje_id);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
             locationStart();
-        }
+        }*/
     }
 
     //Insertamos los datos a nuestra webService
