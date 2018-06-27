@@ -20,6 +20,15 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/imagenLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:contentDescription="@string/imagen_logo"
+        android:maxHeight="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -37,23 +46,26 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:layout_gravity="center"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter">
 
                 <EditText
                     android:id="@+id/password"
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -67,11 +79,15 @@
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:background="@color/colorPrimary"
+                android:textColor="#eee"
+                />
 
         </LinearLayout>
     </ScrollView>
